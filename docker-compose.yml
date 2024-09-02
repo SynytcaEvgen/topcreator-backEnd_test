@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  # server:
+  #   build:
+  #     context: .
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - ./src:/app/src
+  #     - ./logs:/app/logs
+  #   ports:
+  #     - 51057:50051
+  #     - 3000:80
+  #   command: npm run start-dev
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_contaner
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 12345678
+      MONGO_INITDB_DATABASE: customers_db
+    command:
+      - '--logpath'
+      - '/var/log/mongodb/mongod.log'
+    ports:
+      - 27017:27017
+    volumes:
+      - ./docker/mongodb_data:/data/db
+      - ./docker/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
+
