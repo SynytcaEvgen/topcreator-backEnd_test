@@ -1,7 +1,6 @@
-import { Address } from './address.model'
+import { Address } from './address.interface'
 
-export class User {
-	// _id: string;
+export interface Customer {
 	firstName: string;
 	lastName: string;
 	email: string;

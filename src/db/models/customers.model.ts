@@ -27,9 +27,9 @@ const addressShema = new mongoose.Schema({
     default: null,
   },
   
-});
+}, {_id: false});
 
-const schema = new mongoose.Schema(
+export const schema = new mongoose.Schema(
 	{
 		firstName: {
 			type: mongoose.SchemaTypes.String,
@@ -50,5 +50,3 @@ const schema = new mongoose.Schema(
 		}
 	}
 );
-
-export default mongoose.model('users', schema, 'users');
