@@ -42,7 +42,7 @@ class FakeCustomersGenerator{
 	    } catch (error) {
 	      console.error('Error adding customes', error);
 	    }
-	  }, 800);
+	  }, 200);
 	}
 }
 const customer = mongoose.model('customers', schema, 'customers');

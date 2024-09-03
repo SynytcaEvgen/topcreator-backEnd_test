@@ -57,3 +57,6 @@ npm run serve
 npm i
 npm run start-dev
 ```
+
+Після запуску застосунок почне відразу генерувати та анонімізувати customers 
+
