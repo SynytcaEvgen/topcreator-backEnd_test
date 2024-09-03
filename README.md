@@ -35,9 +35,13 @@ MongoDB можна підняти за допомогою docker-compose
 3. База данных знаходиться на сервері
 
 Запустити застосунок за командами
+'''
 npm i
 npm run build
 npm run serve
+'''
 або
+'''
 npm i
 npm run start-dev
+'''
