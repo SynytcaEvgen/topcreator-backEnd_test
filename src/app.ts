@@ -6,9 +6,8 @@ import { generateCustomers } from './server';
 import { customersAnonymizer } from './customers-anonimizer'
 import { startPoint } from './route';
 
-
-
 const httpPort = 3000;
+
 const connectDB = async () => {
     try {
       const conn = await mongoose.connect(MAIN_CONFIG.dbUrl, {

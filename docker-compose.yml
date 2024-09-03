@@ -1,17 +1,26 @@
 version: '3.7'
+networks:
+  setnet:
+   driver: bridge
+   name: setnet
+   external: true
+
 services:
-  # server:
-  #   build:
-  #     context: .
-  #   env_file:
-  #     - .env
-  #   volumes:
-  #     - ./src:/app/src
-  #     - ./logs:/app/logs
-  #   ports:
-  #     - 51057:50051
-  #     - 3000:80
-  #   command: npm run start-dev
+  server:
+    build:
+      context: .
+    environment:
+      - DB_URI=${DB_URI}
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongo1
+    command: npm run start-dev
+    networks:
+      - setnet
   mongo1:
     image: mongo:7.0
     command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
@@ -29,8 +38,12 @@ services:
     volumes:
       - "mongo1_data:/data/db"
       - "mongo1_config:/data/configdb"
+    networks:
+      - setnet
 
 volumes:
   mongo1_data:
   mongo1_config:
+    
+
 

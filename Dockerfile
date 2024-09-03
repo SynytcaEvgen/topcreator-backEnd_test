@@ -1,20 +1,15 @@
-FROM node:20.11.1
-# FROM --platform=linux/amd64 node:20.11.1
+# FROM node:20.11.1
+FROM --platform=linux/amd64 node:20.11.1
+
+WORKDIR /app
+
+COPY package.json ./
+COPY package-lock.json ./
 
 
-ENV CI_JOB_TOKEN ""
-
-RUN npm i -g nodemon jest
-
-WORKDIR /app/
-
-COPY .npmrc .
-COPY package*.json .
-
-RUN npm i
+RUN npm install
 
 COPY . .
-
 RUN npm run build
 
 CMD ["npm", "start"]
